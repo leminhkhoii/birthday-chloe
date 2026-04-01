@@ -2,19 +2,31 @@
 <html lang="vi">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <title>Happy Birthday Chloe 🎬</title>
 
 <script src="https://cdn.tailwindcss.com"></script>
 
 <style>
-body{
+html, body{
   margin:0;
+  padding:0;
   background:black;
   color:white;
   font-family:'Segoe UI', system-ui, sans-serif;
   overflow:hidden;
   font-size:16px;
+  width:100%;
+  height:100%;
+  position:fixed;
+  touch-action:manipulation;
+  -webkit-user-select:none;
+  user-select:none;
+  -webkit-touch-callout:none;
+  transform:translate(0,0);
+  will-change:auto;
 }
 
 /* scene */
@@ -32,8 +44,8 @@ body{
   padding:20px;
   gap:14px;
   box-sizing:border-box;
-  overflow-y:auto;
-  -webkit-overflow-scrolling:touch;
+  top:0;
+  left:0;
 }
 
 .show{ opacity:1; }
@@ -117,6 +129,8 @@ body{
   font-size:16px;
   margin-bottom:16px;
   transition:all 0.3s;
+  box-sizing:border-box;
+  display:block !important;
 }
 
 #startScreen input::placeholder{
@@ -137,10 +151,19 @@ body{
   font-weight:bold;
   cursor:pointer;
   transition:all 0.3s;
+  box-sizing:border-box;
+  display:block;
+  background:white;
+  color:#ff1493;
+  line-height:1;
 }
 
 #startScreen button:hover{
   transform:scale(1.05);
+}
+
+#startScreen button:active{
+  transform:scale(0.98);
 }
 
 /* progress */
@@ -221,10 +244,6 @@ body{
 /* ================= TABLET ================= */
 
 @media (max-width:768px){
-
-  body{
-    overflow:auto;
-  }
 
   #startScreen{
     padding:20px;
@@ -367,6 +386,48 @@ body{
   .scene{
     padding:14px;
     gap:8px;
+  }
+
+}
+
+/* ================= LANDSCAPE MODE ================= */
+
+@media (max-height:500px){
+  
+  .scene{
+    justify-content:flex-start;
+    padding-top:10px;
+    gap:8px;
+    overflow-y:auto;
+    overflow-x:hidden;
+    -webkit-overflow-scrolling:touch;
+  }
+
+  .scene h1{
+    font-size:20px !important;
+  }
+
+  .scene h2{
+    font-size:18px !important;
+  }
+
+  .typeText{
+    font-size:13px;
+  }
+
+  .film-title{
+    top:10%;
+    font-size:16px;
+  }
+
+  .film-strip{
+    padding:15px;
+    gap:15px;
+  }
+
+  .film-strip img{
+    width:80px;
+    height:100px;
   }
 
 }
