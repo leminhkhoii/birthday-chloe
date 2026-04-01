@@ -4,15 +4,16 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Happy Birthday Chloe 🎬</title>
+
 <script src="https://cdn.tailwindcss.com"></script>
 
 <style>
 body{
   margin:0;
-  overflow:hidden;
   background:black;
   color:white;
   font-family:'Segoe UI', system-ui, sans-serif;
+  overflow:hidden;
 }
 
 /* scene */
@@ -39,7 +40,7 @@ body{
   line-height:1.7;
   letter-spacing:0.5px;
   max-width:700px;
-  white-space: pre-wrap; /* FIX DÍNH CHỮ */
+  white-space: pre-wrap;
 }
 
 /* glow */
@@ -51,17 +52,9 @@ body{
 }
 
 /* image cinematic */
-img{
-  max-width:260px;
-  border-radius:20px;
-  margin:12px;
-  box-shadow:0 10px 40px rgba(0,0,0,0.6);
-  transition: transform 6s ease;
-}
-
 .scene img{
-  width:260px;
-  height:340px;
+  width:min(42vw,260px);
+  height:min(56vw,340px);
   object-fit:cover;
   border-radius:20px;
   margin:12px;
@@ -126,15 +119,15 @@ img{
   }
 }
 
-/* film roll scene */
-.film-strip {
-  position: absolute;
-  bottom: 0;
-  width: 200%;
-  display: flex;
-  gap: 30px;
-  animation: scrollFilm 25s linear infinite;
-  padding: 40px;
+/* film roll */
+.film-strip{
+  position:absolute;
+  bottom:0;
+  display:flex;
+  gap:30px;
+  width:max-content;
+  animation:scrollFilm 60s linear infinite;
+  padding:40px;
 }
 
 .film-strip img{
@@ -146,8 +139,8 @@ img{
 }
 
 @keyframes scrollFilm{
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
+  from{ transform:translateX(0); }
+  to{ transform:translateX(-50%); }
 }
 
 .film-title{
@@ -158,18 +151,51 @@ img{
   text-shadow:0 0 20px pink;
 }
 
-.film-strip {
-  position: absolute;
-  bottom: 0;
-  width: max-content;
-  display: flex;
-  gap: 30px;
-  animation: scrollFilm 40s linear infinite;
-  padding: 40px;
-}
-
 .scene:last-child{
   overflow:hidden;
+}
+
+/* ================= MOBILE ================= */
+
+@media (max-width:768px){
+
+  body{
+    overflow:auto;
+  }
+
+  .typeText{
+    font-size:16px;
+    max-width:90%;
+  }
+
+  .scene h1{
+    font-size:32px !important;
+  }
+
+  .scene h2{
+    font-size:24px !important;
+  }
+
+  .film-title{
+    font-size:24px;
+    top:14%;
+  }
+
+  .film-strip img{
+    width:120px;
+    height:160px;
+  }
+
+  .controls{
+    bottom:14px;
+    right:14px;
+  }
+
+  .scene{
+    padding:16px;
+    gap:10px;
+  }
+
 }
 </style>
 </head>
@@ -207,26 +233,23 @@ img{
   <p class="typeText">Nên chắc tháng 4 năm đó dễ thương hơn bình thường rồi 😄</p>
 </div>
 
-<!-- Scene 4 -->
+<!-- Scene ảnh -->
 <div class="scene">
   <img src="./1.JPG">
   <img src="./12.JPG">
 </div>
 
-<!-- Scene 5 -->
 <div class="scene">
   <img src="./11.JPG">
   <img src="./13.JPG">
   <img src="./14.JPG">
 </div>
 
-<!-- Scene 6 -->
 <div class="scene">
   <p class="typeText">Không biết người khác thấy sao...</p>
   <p class="typeText">nhưng anh cảm nhận rằng em luôn làm mọi thứ xung quanh trở nên dễ chịu hơn ✨</p>
 </div>
 
-<!-- Scene 7 -->
 <div class="scene">
   <h2 class="text-3xl mb-4 glow">🎂 Lời chúc 🎂</h2>
   <p class="typeText">
@@ -234,58 +257,36 @@ img{
   </p>
 </div>
 
-<!-- Scene 8 -->
 <div class="scene">
   <p class="typeText">Nếu năm nay có điều gì đặc biệt xảy ra...</p>
   <p class="typeText">hy vọng đó là những điều khiến em mỉm cười nhiều hơn ✨</p>
 </div>
 
-<!-- Scene 9 -->
 <div class="scene">
   <h2 class="text-4xl glow">🎁 Enjoy Your Day 🎁</h2>
   <p class="typeText">Hy vọng năm nay sẽ là một năm thật tuyệt vời của Kim Hiền.</p>
   <p class="typeText">Anh luôn cổ vũ em đó ✨</p>
 </div>
 
-<!-- Scene 10 - Photo Reel -->
+<!-- Scene Film -->
 <div class="scene">
   <div class="film-title">Memories ✨</div>
   <div class="film-strip">
-    <img src="./7.JPG">
-    <img src="./6.JPG">
-    <img src="./8.JPG">
-    <img src="./9.JPG">
-    <img src="./10.JPG">
-    <img src="./15.JPG">
-    <img src="./16.JPG">
-    <img src="./17.JPG">
-    <img src="./18.JPG">
-    <img src="./19.JPG">
-    <img src="./20.JPG">
-    <img src="./21.JPG">
-    <img src="./22.JPEG">
-    <img src="./23.JPEG">
-    <img src="./24.JPEG">
-    <img src="./25.JPEG">
 
-    <img src="./7.JPG">
-    <img src="./6.JPG">
-    <img src="./8.JPG">
-    <img src="./9.JPG">
-    <img src="./10.JPG">
-    <img src="./15.JPG">
-    <img src="./16.JPG">
-    <img src="./17.JPG">
-    <img src="./18.JPG">
-    <img src="./19.JPG">
-    <img src="./20.JPG">
-    <img src="./21.JPG">
-    <img src="./22.JPEG">
-    <img src="./23.JPEG">
-    <img src="./24.JPEG">
-    <img src="./25.JPEG">
+    <!-- duplicate để chạy vô hạn -->
+    <img src="./7.JPG"><img src="./6.JPG"><img src="./8.JPG"><img src="./9.JPG">
+    <img src="./10.JPG"><img src="./15.JPG"><img src="./16.JPG"><img src="./17.JPG">
+    <img src="./18.JPG"><img src="./19.JPG"><img src="./20.JPG"><img src="./21.JPG">
+    <img src="./22.JPEG"><img src="./23.JPEG"><img src="./24.JPEG"><img src="./25.JPEG">
+
+    <img src="./7.JPG"><img src="./6.JPG"><img src="./8.JPG"><img src="./9.JPG">
+    <img src="./10.JPG"><img src="./15.JPG"><img src="./16.JPG"><img src="./17.JPG">
+    <img src="./18.JPG"><img src="./19.JPG"><img src="./20.JPG"><img src="./21.JPG">
+    <img src="./22.JPEG"><img src="./23.JPEG"><img src="./24.JPEG"><img src="./25.JPEG">
+
   </div>
 </div>
+
 <div id="progress"></div>
 
 <div class="controls">
@@ -351,7 +352,7 @@ setInterval(()=>{
   setTimeout(()=>heart.remove(),6000);
 },300);
 
-/* typewriter FIX CHÍNH */
+/* typewriter */
 function runTypewriter(scene){
   const elements = scene.querySelectorAll(".typeText");
 
