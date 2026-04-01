@@ -16,6 +16,7 @@ body{
   overflow:hidden;
 }
 
+/* scene */
 .scene{
   position:absolute;
   width:100%;
@@ -27,33 +28,22 @@ body{
   opacity:0;
   transition:opacity 1.2s ease;
   text-align:center;
-  padding:clamp(12px, 4vw, 24px);
-  gap:clamp(8px, 2vw, 16px);
+  padding:20px;
+  gap:14px;
 }
 
 .show{ opacity:1; }
 
-/* ✅ FIX RESPONSIVE TEXT */
+/* text */
 .typeText{
-  font-size:clamp(14px, 2.8vw, 20px);
+  font-size:20px;
   line-height:1.7;
-  letter-spacing:0.4px;
-  max-width:min(90%, 700px);
+  letter-spacing:0.5px;
+  max-width:700px;
   white-space: pre-wrap;
 }
 
-h1{
-  font-size:clamp(28px, 6vw, 52px);
-}
-
-h2{
-  font-size:clamp(22px, 5vw, 40px);
-}
-
-p{
-  font-size:clamp(14px, 3vw, 20px);
-}
-
+/* glow */
 .glow{
   text-shadow:
   0 0 10px #ff9de2,
@@ -61,20 +51,25 @@ p{
   0 0 40px #ff4dc4;
 }
 
+/* image cinematic */
 .scene img{
   width:min(42vw,260px);
   height:min(56vw,340px);
   object-fit:cover;
   border-radius:20px;
-  margin:10px;
+  margin:12px;
+  box-shadow:0 10px 40px rgba(0,0,0,0.6);
+  transition: transform 6s ease;
 }
 
 .scene.show img{
-  transform:scale(1.05);
+  transform:scale(1.08);
 }
 
+/* hearts */
 .heart{
   position:absolute;
+  color:pink;
   animation: floatUp 6s linear infinite;
 }
 
@@ -83,6 +78,7 @@ p{
   100%{ transform:translateY(-10vh); opacity:0;}
 }
 
+/* start screen */
 #startScreen{
   position:fixed;
   width:100%;
@@ -93,10 +89,9 @@ p{
   align-items:center;
   justify-content:center;
   z-index:9999;
-  padding:20px;
-  text-align:center;
 }
 
+/* progress */
 #progress{
   position:fixed;
   bottom:0;
@@ -104,29 +99,43 @@ p{
   height:4px;
   background:pink;
   width:0%;
+  transition:width .4s;
 }
 
+/* controls */
 .controls{
   position:fixed;
-  bottom:clamp(10px, 3vw, 20px);
-  right:clamp(10px, 3vw, 20px);
+  bottom:20px;
+  right:20px;
   display:flex;
   gap:10px;
 }
 
+/* confetti */
+@keyframes fall{
+  to{
+    transform:translateY(100vh) rotate(720deg);
+    opacity:0;
+  }
+}
+
+/* film roll */
 .film-strip{
   position:absolute;
   bottom:0;
   display:flex;
-  gap:20px;
+  gap:30px;
   width:max-content;
   animation:scrollFilm 60s linear infinite;
-  padding:20px;
+  padding:40px;
 }
 
 .film-strip img{
-  width:clamp(90px, 20vw, 180px);
-  height:clamp(120px, 26vw, 240px);
+  width:180px;
+  height:240px;
+  object-fit:cover;
+  border-radius:14px;
+  box-shadow:0 10px 30px rgba(0,0,0,0.7);
 }
 
 @keyframes scrollFilm{
@@ -136,16 +145,57 @@ p{
 
 .film-title{
   position:absolute;
-  top:15%;
-  font-size:clamp(20px, 5vw, 40px);
+  top:18%;
+  font-size:40px;
+  letter-spacing:3px;
+  text-shadow:0 0 20px pink;
 }
 
 .scene:last-child{
   overflow:hidden;
 }
 
+/* ================= MOBILE ================= */
+
 @media (max-width:768px){
-  body{ overflow:auto; }
+
+  body{
+    overflow:auto;
+  }
+
+  .typeText{
+    font-size:16px;
+    max-width:90%;
+  }
+
+  .scene h1{
+    font-size:32px !important;
+  }
+
+  .scene h2{
+    font-size:24px !important;
+  }
+
+  .film-title{
+    font-size:24px;
+    top:14%;
+  }
+
+  .film-strip img{
+    width:120px;
+    height:160px;
+  }
+
+  .controls{
+    bottom:14px;
+    right:14px;
+  }
+
+  .scene{
+    padding:16px;
+    gap:10px;
+  }
+
 }
 </style>
 </head>
@@ -153,28 +203,28 @@ p{
 <body>
 
 <div id="startScreen">
-  <h1 class="glow">Một chiếc thiệp nhỏ cho Chloe 🎁</h1>
+  <h1 class="text-3xl mb-6 glow">Một chiếc thiệp nhỏ cho Chloe 🎁</h1>
 
   <input id="viewerName"
     placeholder="Nhập tên của bạn..."
-    class="px-4 py-2 rounded-lg text-black my-4 w-full max-w-xs">
+    class="px-4 py-2 rounded-lg text-black mb-4">
 
   <button onclick="startExperience()"
-    class="bg-white text-pink-500 px-6 py-3 rounded-xl hover:scale-110 transition">
+    class="bg-white text-pink-500 px-6 py-3 rounded-xl text-lg hover:scale-110 transition">
     💖 Mở thiệp
   </button>
 </div>
 
 <!-- Scene 1 -->
 <div class="scene show">
-  <h1 class="glow">🎉 Happy Birthday 🎉</h1>
-  <p>Dương Thị Kim Hiền (Chloe)</p>
-  <p id="viewerText" class="opacity-70"></p>
+  <h1 class="text-5xl glow mb-6">🎉 Happy Birthday 🎉</h1>
+  <p class="text-xl">Dương Thị Kim Hiền (Chloe)</p>
+  <p id="viewerText" class="mt-6 text-sm opacity-70"></p>
 </div>
 
 <!-- Scene 2 -->
 <div class="scene">
-  <p>07 / 04 / 2003 ✨</p>
+  <p class="text-2xl mb-6">07 / 04 / 2003 ✨</p>
   <p class="typeText">Tháng 4 vốn đã dịu dàng...</p>
 </div>
 
@@ -183,7 +233,7 @@ p{
   <p class="typeText">Nên chắc tháng 4 năm đó dễ thương hơn bình thường rồi 😄</p>
 </div>
 
-<!-- Image scenes -->
+<!-- Scene ảnh -->
 <div class="scene">
   <img src="./1.JPG">
   <img src="./12.JPG">
@@ -201,8 +251,10 @@ p{
 </div>
 
 <div class="scene">
-  <h2 class="glow">🎂 Lời chúc 🎂</h2>
-  <p class="typeText">Mong Kim Hiền luôn tự tin, vui vẻ và đạt được những điều mình muốn.</p>
+  <h2 class="text-3xl mb-4 glow">🎂 Lời chúc 🎂</h2>
+  <p class="typeText">
+    Mong Kim Hiền luôn tự tin, vui vẻ và đạt được những điều mình muốn.
+  </p>
 </div>
 
 <div class="scene">
@@ -211,17 +263,27 @@ p{
 </div>
 
 <div class="scene">
-  <h2 class="glow">🎁 Enjoy Your Day 🎁</h2>
+  <h2 class="text-4xl glow">🎁 Enjoy Your Day 🎁</h2>
   <p class="typeText">Hy vọng năm nay sẽ là một năm thật tuyệt vời của Kim Hiền.</p>
   <p class="typeText">Anh luôn cổ vũ em đó ✨</p>
 </div>
 
-<!-- Film -->
+<!-- Scene Film -->
 <div class="scene">
   <div class="film-title">Memories ✨</div>
   <div class="film-strip">
+
+    <!-- duplicate để chạy vô hạn -->
     <img src="./7.JPG"><img src="./6.JPG"><img src="./8.JPG"><img src="./9.JPG">
     <img src="./10.JPG"><img src="./15.JPG"><img src="./16.JPG"><img src="./17.JPG">
+    <img src="./18.JPG"><img src="./19.JPG"><img src="./20.JPG"><img src="./21.JPG">
+    <img src="./22.JPEG"><img src="./23.JPEG"><img src="./24.JPEG"><img src="./25.JPEG">
+
+    <img src="./7.JPG"><img src="./6.JPG"><img src="./8.JPG"><img src="./9.JPG">
+    <img src="./10.JPG"><img src="./15.JPG"><img src="./16.JPG"><img src="./17.JPG">
+    <img src="./18.JPG"><img src="./19.JPG"><img src="./20.JPG"><img src="./21.JPG">
+    <img src="./22.JPEG"><img src="./23.JPEG"><img src="./24.JPEG"><img src="./25.JPEG">
+
   </div>
 </div>
 
@@ -232,13 +294,24 @@ p{
   <button onclick="nextScene()" class="bg-pink-500 px-3 py-1 rounded">→</button>
 </div>
 
+<audio id="music" loop>
+  <source src="./Người Im Lặng Gặp Người Hay Nói.mp3" type="audio/mpeg">
+</audio>
+
 <script>
 const scenes = document.querySelectorAll('.scene');
 const progress = document.getElementById("progress");
 let index = 0;
+let autoSlide;
 
 function startExperience(){
+  const name = document.getElementById("viewerName").value || "một người bí ẩn";
+  document.getElementById("viewerText").innerText = "Mở bởi: " + name;
+
   document.getElementById('startScreen').style.display="none";
+  document.getElementById('music').play();
+
+  autoSlide = setInterval(nextScene, 5500);
 }
 
 function updateProgress(){
@@ -249,6 +322,9 @@ function showScene(i){
   scenes.forEach(s=>s.classList.remove("show"));
   scenes[i].classList.add("show");
   updateProgress();
+  runTypewriter(scenes[i]);
+
+  if(i === scenes.length-1) confetti();
 }
 
 function nextScene(){
@@ -262,6 +338,59 @@ function prevScene(){
   if(index > 0){
     index--;
     showScene(index);
+  }
+}
+
+/* hearts */
+setInterval(()=>{
+  const heart=document.createElement("div");
+  heart.className="heart";
+  heart.innerHTML="💖";
+  heart.style.left=Math.random()*window.innerWidth+"px";
+  heart.style.fontSize=(Math.random()*20+10)+"px";
+  document.body.appendChild(heart);
+  setTimeout(()=>heart.remove(),6000);
+},300);
+
+/* typewriter */
+function runTypewriter(scene){
+  const elements = scene.querySelectorAll(".typeText");
+
+  elements.forEach((el,index)=>{
+    if(el.dataset.done) return;
+
+    const text = el.textContent;
+    el.textContent="";
+    el.dataset.done = true;
+
+    let i=0;
+
+    setTimeout(()=>{
+      function typing(){
+        if(i < text.length){
+          const char = text[i] === " " ? "\u00A0" : text[i];
+          el.innerHTML += char;
+          i++;
+          setTimeout(typing,30);
+        }
+      }
+      typing();
+    }, index*600);
+  });
+}
+
+/* confetti */
+function confetti(){
+  for(let i=0;i<120;i++){
+    const c=document.createElement("div");
+    c.style.position="absolute";
+    c.style.left=Math.random()*window.innerWidth+"px";
+    c.style.top="-10px";
+    c.style.width="6px";
+    c.style.height="6px";
+    c.style.background="hsl("+Math.random()*360+"deg 100% 60%)";
+    c.style.animation="fall 4s linear forwards";
+    document.body.appendChild(c);
   }
 }
 
